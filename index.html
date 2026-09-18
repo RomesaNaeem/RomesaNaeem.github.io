@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Romesa Naeem — Accounting Student</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F7F4EC;
+    --paper-2:#F1ECE0;
+    --ink:#1C2B39;
+    --ink-soft:#3E4C59;
+    --slate:#5B6672;
+    --brass:#8A6A32;
+    --brass-soft:#B9995F;
+    --rule:#D9D2C0;
+    --rule-strong:#C3B99F;
+    --max:920px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'IBM Plex Sans', -apple-system, sans-serif;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  a{color:var(--brass); text-decoration:none;}
+  a:hover{text-decoration:underline;}
+  a:focus-visible, button:focus-visible{outline:2px solid var(--brass); outline-offset:3px;}
+
+  .wrap{
+    max-width:var(--max);
+    margin:0 auto;
+    padding:0 28px;
+  }
+
+  /* ===== Masthead ===== */
+  header.masthead{
+    padding:64px 0 0;
+    border-bottom:1px solid var(--rule-strong);
+  }
+  .masthead-inner{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    gap:24px;
+    flex-wrap:wrap;
+    padding-bottom:26px;
+  }
+  .masthead-name{
+    font-family:'Newsreader', Georgia, serif;
+    font-weight:500;
+    font-size:clamp(2.1rem, 5vw, 3.1rem);
+    letter-spacing:-0.01em;
+    margin:0;
+    color:var(--ink);
+  }
+  .masthead-role{
+    font-size:0.95rem;
+    color:var(--slate);
+    margin-top:8px;
+    font-family:'IBM Plex Mono', monospace;
+  }
+  .masthead-contact{
+    text-align:right;
+    font-size:0.88rem;
+    color:var(--ink-soft);
+    line-height:1.9;
+  }
+  .masthead-contact a{color:var(--ink-soft);}
+  .masthead-contact a:hover{color:var(--brass);}
+
+  nav.toc{
+    display:flex;
+    gap:28px;
+    padding:14px 0;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.82rem;
+    color:var(--slate);
+  }
+  nav.toc a{color:var(--slate);}
+  nav.toc a:hover{color:var(--brass); text-decoration:none;}
+  nav.toc span.n{color:var(--brass-soft); margin-right:6px;}
+
+  /* ===== Statement ===== */
+  section.statement{
+    padding:56px 0 48px;
+  }
+  .statement p{
+    font-family:'Newsreader', Georgia, serif;
+    font-weight:400;
+    font-style:italic;
+    font-size:clamp(1.4rem, 3vw, 1.9rem);
+    line-height:1.5;
+    color:var(--ink);
+    max-width:760px;
+    margin:0;
+  }
+
+  /* ===== Section scaffolding ===== */
+  section.block{
+    padding:44px 0;
+    border-top:1px solid var(--rule);
+  }
+  .block-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    margin-bottom:30px;
+    gap:16px;
+  }
+  .block-head h2{
+    font-family:'Newsreader', Georgia, serif;
+    font-weight:500;
+    font-size:1.55rem;
+    margin:0;
+    color:var(--ink);
+  }
+  .block-head .ref{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.78rem;
+    color:var(--brass-soft);
+  }
+
+  /* ===== Skills — ledger rows ===== */
+  .ledger{
+    border-top:1px solid var(--rule);
+  }
+  .ledger-row{
+    display:grid;
+    grid-template-columns:200px 1fr;
+    gap:20px;
+    padding:16px 0;
+    border-bottom:1px solid var(--rule);
+  }
+  .ledger-row dt{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.8rem;
+    color:var(--brass);
+    padding-top:2px;
+  }
+  .ledger-row dd{
+    margin:0;
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px 10px;
+  }
+  .chip{
+    font-size:0.9rem;
+    color:var(--ink-soft);
+    padding:5px 0;
+  }
+  .chip:not(:last-child)::after{
+    content:"·";
+    color:var(--rule-strong);
+    margin-left:10px;
+  }
+
+  /* ===== Projects ===== */
+  .project{
+    padding:28px 0;
+    border-bottom:1px solid var(--rule);
+    display:grid;
+    grid-template-columns:1fr;
+    gap:10px;
+  }
+  .project:last-child{border-bottom:none;}
+  .project-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    gap:16px;
+    flex-wrap:wrap;
+  }
+  .project-title{
+    font-family:'Newsreader', Georgia, serif;
+    font-size:1.25rem;
+    font-weight:500;
+    color:var(--ink);
+    margin:0;
+  }
+  .project-meta{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.78rem;
+    color:var(--slate);
+    white-space:nowrap;
+  }
+  .project-org{
+    font-size:0.92rem;
+    color:var(--brass);
+    font-weight:500;
+  }
+  .project p.desc{
+    margin:6px 0 0;
+    color:var(--ink-soft);
+    max-width:680px;
+  }
+  .project .link-row{
+    margin-top:4px;
+    font-size:0.86rem;
+  }
+  .project .link-row a::after{
+    content:" ↗";
+  }
+
+  /* ===== Footer ===== */
+  footer{
+    padding:40px 0 64px;
+    border-top:1px solid var(--rule-strong);
+    margin-top:8px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:12px;
+  }
+  footer p{
+    margin:0;
+    font-size:0.82rem;
+    color:var(--slate);
+    font-family:'IBM Plex Mono', monospace;
+  }
+  footer a{color:var(--ink-soft);}
+
+  @media (max-width:600px){
+    .masthead-inner{flex-direction:column; align-items:flex-start;}
+    .masthead-contact{text-align:left;}
+    .ledger-row{grid-template-columns:1fr;}
+    nav.toc{gap:16px; flex-wrap:wrap;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="masthead">
+    <div class="masthead-inner">
+      <div>
+        <p class="masthead-name">Romesa Naeem</p>
+        <p class="masthead-role">Accounting — Rutgers Business School, Class of 2028</p>
+      </div>
+      <div class="masthead-contact">
+        <a href="mailto:rn484@scarletmail.rutgers.edu">rn484@scarletmail.rutgers.edu</a><br>
+        <a href="https://www.linkedin.com/in/romesa-naeem-0576311b2/" target="_blank" rel="noopener">linkedin.com/in/romesa-naeem</a>
+      </div>
+    </div>
+    <nav class="toc">
+      <a href="#background"><span class="n">01</span>Background</a>
+      <a href="#skills"><span class="n">02</span>Skills</a>
+      <a href="#projects"><span class="n">03</span>Projects</a>
+    </nav>
+  </header>
+
+  <section class="statement">
+    <p>I'm an Accounting student at Rutgers University with a growing interest in financial systems, cultural literacy, and ethical business practices. As an aspiring accounting professional, I'm building a foundation shaped by cross-cultural communication, hands-on work experience, and community-focused leadership. I’m curious, community-minded, and passionate about continuous learning!
+
+</p>
+  </section>
+
+  <section class="block" id="background">
+    <div class="block-head">
+      <h2>Background</h2>
+      <span class="ref">education &amp; development</span>
+    </div>
+    <dl class="ledger">
+      <div class="ledger-row">
+        <dt>Education</dt>
+        <dd style="display:block;">
+          <span style="color:var(--ink); font-weight:500;">Rutgers Business School–New Brunswick</span><br>
+          <span style="color:var(--ink-soft); font-size:0.92rem;">Bachelor of Science, Accounting and African, Middle Eastern, South Asian Languages and Literature — GPA: 3.6 — May 2028 (150 credit track)</span>
+        </dd>
+      </div>
+      <div class="ledger-row">
+        <dt>Leadership</dt>
+        <dd style="display:block;">
+          <span style="color:var(--ink-soft); font-size:0.92rem;">Founder and President, Crossroads Club — Treasurer, Rutgers Commuter Student Association</span>
+        </dd>
+      </div>
+      <div class="ledger-row">
+        <dt>Professional Development</dt>
+        <dd style="display:block;">
+          <span style="color:var(--ink-soft); font-size:0.92rem;">Road to CPA (September 2024 – May 2026) — Deloitte Future Accountants Leaders Summit (October 2025)</span>
+        </dd>
+      </div>
+    </dl>
+  </section>
+
+  <section class="block" id="skills">
+    <div class="block-head">
+      <h2>Skills</h2>
+      <span class="ref">as of 2026</span>
+    </div>
+    <dl class="ledger">
+      <div class="ledger-row">
+        <dt>Tools</dt>
+        <dd>
+          <span class="chip">SurePrep (1040SCAN)</span>
+          <span class="chip">XCM</span>
+          <span class="chip">Microsoft Excel</span>
+          <span class="chip">Google Suite</span>
+        </dd>
+      </div>
+      <div class="ledger-row">
+        <dt>Practice</dt>
+        <dd>
+          <span class="chip">Invoice verification &amp; account analysis</span>
+          <span class="chip">1040 tax data prep &amp; compliance review</span>
+          <span class="chip">Budget development &amp; resource planning</span>
+          <span class="chip">Records &amp; licensing management</span>
+        </dd>
+      </div>
+      <div class="ledger-row">
+        <dt>Languages</dt>
+        <dd>
+          <span class="chip">Urdu — fluent</span>
+          <span class="chip">Punjabi — fluent</span>
+          <span class="chip">Hindi — intermediate</span>
+        </dd>
+      </div>
+    </dl>
+  </section>
+
+  <section class="block" id="projects">
+    <div class="block-head">
+      <h2>Projects</h2>
+      <span class="ref">selected work</span>
+    </div>
+
+    <div class="project">
+      <div class="project-top">
+        <h3 class="project-title">Client Tax Verification</h3>
+        <span class="project-meta">Jan – Apr 2026</span>
+      </div>
+      <span class="project-org">Withum Smith+Brown, PC</span>
+      <p class="desc">Verified and input client 1040 tax data using SurePrep (1040SCAN) with OCR technology, ensuring accurate and efficient tax document preparation. Reviewed scanned tax documents, identified processing errors, and supported paperless tax workflows. Utilized XCM to manage workflow distribution and collaborated with tax professionals.</p>
+      <!-- Add a link here if you'd like, e.g. a firm reference page:
+      <div class="link-row"><a href="#" target="_blank" rel="noopener">About Withum's tax practice</a></div>
+      -->
+    </div>
+
+    <div class="project">
+      <div class="project-top">
+        <h3 class="project-title">Subsidiary Rights Catalog Rebuild</h3>
+        <span class="project-meta">Sep 2024 – Dec 2025</span>
+      </div>
+      <span class="project-org">Rutgers University Press</span>
+      <p class="desc">Managed 1,500+ academic titles using Excel, improving catalog discoverability and accuracy. Scanned and filed subsidiary book rights, tracking licensing statuses across multiple platforms. Maintained author contact records, ensuring accurate and up-to-date documentation.</p>
+    </div>
+
+    <div class="project">
+      <div class="project-top">
+        <h3 class="project-title">Tax Case Simulations</h3>
+        <span class="project-meta">2025 – 2026</span>
+      </div>
+      <span class="project-org">Forage: PwC US Tax · KPMG Career Catalyst</span>
+      <p class="desc">Prepared a client tax return, calculating book-to-tax differences (BTDs) and taxable income. Drafted a client-ready summary report, demonstrating documentation and tax accounting skills.</p>
+      <!-- Swap these placeholder hrefs for your actual certificate links from Forage/LinkedIn -->
+      <div class="link-row"><a href="#" target="_blank" rel="noopener">PwC certificate</a> &nbsp;·&nbsp; <a href="#" target="_blank" rel="noopener">KPMG certificate</a></div>
+    </div>
+  </section>
+
+  <footer>
+    <p>Romesa Naeem</p>
+    <p><a href="mailto:rn484@scarletmail.rutgers.edu">rn484@scarletmail.rutgers.edu</a></p>
+  </footer>
+</div>
+
+</body>
+</html>
